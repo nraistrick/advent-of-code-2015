@@ -18,4 +18,11 @@ class ProgramTest
         assertEquals(-3, Program.calculateFinalFloor(")))"));
         assertEquals(-3, Program.calculateFinalFloor(")())())"));
     }
+
+    @Test
+    void findFirstBasementInstruction()
+    {
+        assertEquals(1,  Program.findFirstBasementInstruction(")"));
+        assertEquals(5,  Program.findFirstBasementInstruction("()())"));
+    }
 }

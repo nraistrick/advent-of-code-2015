@@ -29,4 +29,12 @@ class ProgramTest
     {
         assertEquals(101, Program.calculateTotalPaper(Arrays.asList("2x3x4", "1x1x10")));
     }
+
+    @Test
+    void CalculateRequiredRibbon()
+    {
+        assertEquals(34, new Present(2, 3, 4).calculateRequiredRibbon());
+        assertEquals(34, new Present(3, 2, 4).calculateRequiredRibbon());
+        assertEquals(14, new Present(1, 1, 10).calculateRequiredRibbon());
+    }
 }

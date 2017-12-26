@@ -1,5 +1,9 @@
 package day02;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Represents a single unwrapped gift
  */
@@ -32,5 +36,17 @@ public class Present
         int smallestSide = Math.min(firstSide, Math.min(secondSide, thirdSide));
 
         return (2 * firstSide) + (2 * secondSide) + (2 * thirdSide) + smallestSide;
+    }
+
+    public int calculateRequiredRibbon()
+    {
+        int ribbonRequired = 0;
+        List<Integer> sides = Arrays.asList(Height, Width, Length);
+        Collections.sort(sides);
+        ribbonRequired += (2 * sides.get(0)) + (2 * sides.get(1));
+
+        ribbonRequired += Height * Width * Length;
+
+        return ribbonRequired;
     }
 }

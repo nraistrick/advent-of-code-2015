@@ -17,6 +17,15 @@ class ProgramTest
     }
 
     @Test
+    void isOnImprovedNiceList()
+    {
+        assertTrue(Program.isOnImprovedNiceList("qjhvhtzxzqqjkmpb"));
+        assertTrue(Program.isOnImprovedNiceList("xxyxx"));
+        assertFalse(Program.isOnImprovedNiceList("uurcxstgmygtbstg"));
+        assertFalse(Program.isOnImprovedNiceList("ieodomkazucvgmuy"));
+    }
+
+    @Test
     void containsThreeVowels()
     {
         assertTrue(Program.containsThreeVowels("aeiouaeiouaeiou"));
@@ -35,5 +44,21 @@ class ProgramTest
     {
         assertTrue(Program.containsInvalidString("haegwjzuvuyypxyu"));
         assertFalse(Program.containsInvalidString("aeiouaeiouaeiou"));
+    }
+
+    @Test
+    void containsNonOverlappingRepeatedLetters()
+    {
+        assertTrue(Program.containsNonOverlappingRepeatedLetters("xyxy"));
+        assertTrue(Program.containsNonOverlappingRepeatedLetters("aabcdefgaa"));
+        assertFalse(Program.containsNonOverlappingRepeatedLetters("aaa"));
+    }
+
+    @Test
+    void containsRepeatingSequence()
+    {
+        assertTrue(Program.containsRepeatingSequence("aaa"));
+        assertTrue(Program.containsRepeatingSequence("xyx"));
+        assertTrue(Program.containsRepeatingSequence("abcdefeghi"));
     }
 }

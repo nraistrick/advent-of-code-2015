@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Calculates the number of lights lit in a large grid as part of a house
- * decorating contest
+ * Calculates the total brightness of all lights lit in a large grid as part
+ * of a house decorating contest
  */
 public class Program
 {
-    boolean[][] grid;
+    int[][] grid;
 
     public Program()
     {
-        grid = new boolean[1000][1000];
+        grid = new int[1000][1000];
     }
 
     public static void main(String[] args) throws IOException
@@ -24,22 +24,22 @@ public class Program
 
         Program program = new Program();
         program.runInstructions(inputData);
-        System.out.println(String.format("The number of lights left on is: %d", program.calculateLightsOn()));
+        System.out.println(String.format("The total brightness is: %d", program.calculateTotalBrightness()));
     }
 
-    public int calculateLightsOn()
+    public int calculateTotalBrightness()
     {
-        int lightsOn = 0;
+        int totalBrightness = 0;
 
         for (int i = 0; i < grid.length; i++)
         {
             for (int j = 0; j < grid[0].length; j++)
             {
-                if (grid[i][j]) lightsOn++;
+                totalBrightness += grid[i][j];
             }
         }
 
-        return lightsOn;
+        return totalBrightness;
     }
 
     public void runInstructions(List<String> instructions)
@@ -67,7 +67,7 @@ public class Program
         {
             for (int j = startY; j <= endY; j++)
             {
-                grid[i][j] = true;
+                grid[i][j]++;
             }
         }
     }
@@ -78,7 +78,7 @@ public class Program
         {
             for (int j = startY; j <= endY; j++)
             {
-                grid[i][j] = false;
+                if (grid[i][j] > 0) grid[i][j]--;
             }
         }
     }
@@ -89,7 +89,7 @@ public class Program
         {
             for (int j = startY; j <= endY; j++)
             {
-                grid[i][j] = !grid[i][j];
+                grid[i][j] += 2;
             }
         }
     }

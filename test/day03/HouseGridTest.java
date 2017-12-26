@@ -10,15 +10,15 @@ class HouseGridTest
     public void testFollowInstructions()
     {
         HouseGrid grid = new HouseGrid();
-        grid.followInstructions(">");
-        assertEquals(2, grid.HousesVisited);
+        grid.followInstructions("^v");
+        assertEquals(3, grid.HousesVisited);
 
         grid = new HouseGrid();
         grid.followInstructions("^>v<");
-        assertEquals(4, grid.HousesVisited);
+        assertEquals(3, grid.HousesVisited);
 
         grid = new HouseGrid();
         grid.followInstructions("^v^v^v^v^v");
-        assertEquals(2, grid.HousesVisited);
+        assertEquals(11, grid.HousesVisited);
     }
 }

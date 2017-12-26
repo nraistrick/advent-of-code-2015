@@ -11,8 +11,8 @@ class ProgramTest
     @Test
     void getHashEnumerationWithLeadingZeroes() throws NoSuchAlgorithmException
     {
-        assertEquals(609043, Program.getHashEnumerationWithLeadingZeroes("abcdef"));
-        assertEquals(1048970, Program.getHashEnumerationWithLeadingZeroes("pqrstuv"));
+        assertEquals(609043, Program.getHashEnumeration("abcdef", "00000"));
+        assertEquals(1048970, Program.getHashEnumeration("pqrstuv", "00000"));
     }
 
 }

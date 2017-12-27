@@ -18,6 +18,13 @@ class ProgramTest
     }
 
     @Test
+    void countEncodedCharacterDifference() throws IOException
+    {
+        List<String> inputData = Utilities.getFileLines("day08/testinput.txt");
+        assertEquals(19, Program.countEncodedCharacterDifference(inputData));
+    }
+
+    @Test
     void countRawCharactersInData() throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day08/testinput.txt");
@@ -32,6 +39,13 @@ class ProgramTest
     }
 
     @Test
+    void countEncodedCharacters() throws IOException
+    {
+        List<String> inputData = Utilities.getFileLines("day08/testinput.txt");
+        assertEquals(42, Program.countEncodedCharacters(inputData));
+    }
+
+    @Test
     void removeRedundantInMemoryCharacters() throws IOException
     {
         assertEquals("v_\"lgs\"kvjfy\\wmut_r",
@@ -42,5 +56,14 @@ class ProgramTest
                 Program.removeRedundantInMemoryCharacters("\"jcrkptrsasjp\\\\\\\"cwigzynjgspxxv\\\\vyb\""));
         assertEquals("x\"_j\\xwwvpdldz",
                 Program.removeRedundantInMemoryCharacters("\"x\\\"\\xcaj\\\\xwwvpdldz\""));
+    }
+
+    @Test
+    void encodeString()
+    {
+        assertEquals("\\\"\\\"",                 Program.encodeString("\"\""));
+        assertEquals("\\\"abc\\\"",              Program.encodeString("\"abc\""));
+        assertEquals("\\\"aaa\\\\\\\"aaa\\\"",   Program.encodeString("\"aaa\\\"aaa\""));
+        assertEquals("\\\"\\\\x27\\\"",          Program.encodeString("\"\\x27\""));
     }
 }

@@ -16,6 +16,9 @@ public class Program
         List<String> inputData = Utilities.getFileLines("day08/input.txt");
         int difference = countCharacterDifference(inputData);
         System.out.println(String.format("The character difference between raw and in-memory is: %d", difference));
+
+        difference = countEncodedCharacterDifference(inputData);
+        System.out.println(String.format("The character difference between raw and encoded is: %d", difference));
     }
 
     public static int countCharacterDifference(List<String> inputData)
@@ -24,6 +27,14 @@ public class Program
         int inMemoryCharacters = countInMemoryCharactersInData(inputData);
 
         return rawCharacters - inMemoryCharacters;
+    }
+
+    public static int countEncodedCharacterDifference(List<String> inputData)
+    {
+        int rawCharacters = countRawCharactersInData(inputData);
+        int encodedCharacters = countEncodedCharacters(inputData);
+
+        return encodedCharacters - rawCharacters;
     }
 
     public static int countRawCharactersInData(List<String> inputData)
@@ -38,6 +49,19 @@ public class Program
     {
         int total = 0;
         for (String line: inputData) total += removeRedundantInMemoryCharacters(line).length();
+
+        return total;
+    }
+
+    public static int countEncodedCharacters(List<String> inputData)
+    {
+        int total = 0;
+        for (String line : inputData)
+        {
+            total += encodeString(line).length();
+
+            total += 2; // Add enclosing quotes
+        }
 
         return total;
     }
@@ -75,5 +99,15 @@ public class Program
         }
 
         return builder.toString();
+    }
+
+    public static String encodeString(String inputText)
+    {
+        inputText = inputText.replace("\\", "\\\\");
+        inputText = inputText.replace("\"", "\\\"");
+
+        StringBuilder builder = new StringBuilder(inputText);
+
+        return inputText;
     }
 }

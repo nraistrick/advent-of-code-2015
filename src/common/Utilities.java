@@ -65,4 +65,19 @@ public class Utilities
 
         return sb.toString();
     }
+
+    /**
+     * Finds the index of an nth occurrence of a string
+     */
+    public static int nthIndexOf(String source, String sought, int n) {
+        int index = source.indexOf(sought);
+        if (index == -1) return -1;
+
+        for (int i = 1; i < n; i++)
+        {
+            index = source.indexOf(sought, index + 1);
+            if (index == -1) return -1;
+        }
+        return index;
+    }
 }

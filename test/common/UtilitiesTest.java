@@ -49,4 +49,16 @@ class UtilitiesTest
     {
         assertEquals("68656c6c6f", Utilities.convertByteToHex("hello".getBytes()));
     }
+
+    @Test
+    void nthIndexOf()
+    {
+        assertEquals(0,  Utilities.nthIndexOf("abc abc abc", "abc", 1));
+        assertEquals(4,  Utilities.nthIndexOf("abc abc abc", "abc", 2));
+        assertEquals(3,  Utilities.nthIndexOf("abcabcabc", "abc", 2));
+        assertEquals(6,  Utilities.nthIndexOf("abcabcabc", "abc", 3));
+        assertEquals(8,  Utilities.nthIndexOf("abc abc abc", "abc", 3));
+        assertEquals(13, Utilities.nthIndexOf("abc abc defasabc", "abc", 3));
+        assertEquals(-1, Utilities.nthIndexOf("abc abc defasabc", "abc", 4));
+    }
 }

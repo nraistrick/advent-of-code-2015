@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Find the shortest distance Santa can travel to deliver presents to
- * several new locations
+ * Find the shortest and longest distances Santa can travel to deliver
+ * presents to several new locations
  */
 public class Program
 {
@@ -28,6 +28,9 @@ public class Program
 
         int shortestAvailableDistance = Collections.min(allDistances);
         System.out.println(String.format("The shortest available distance is: %d", shortestAvailableDistance));
+
+        int maximumAvailableDistance = Collections.max(allDistances);
+        System.out.println(String.format("The maximum available distance is: %d", maximumAvailableDistance));
     }
 
     public static Map<String, Map<String, Integer>> createLocationLookup(List<String> inputData)

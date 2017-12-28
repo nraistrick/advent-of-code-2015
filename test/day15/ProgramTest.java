@@ -16,7 +16,7 @@ class ProgramTest
     void getHighestScoringCookie() throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day15/testinput.txt");
-        assertEquals(62842880, Program.getHighestScoringCookie(inputData));
+        assertEquals(57600000, Program.getHighestScoringCookie(inputData));
     }
 
     @Test
@@ -24,9 +24,9 @@ class ProgramTest
     {
         List<String> inputData = Utilities.getFileLines("day15/testinput.txt");
         Map<String, Ingredient> ingredients = getIngredients(inputData);
-        ingredients.get("Butterscotch").setQuantity(44);
-        ingredients.get("Cinnamon").setQuantity(56);
+        ingredients.get("Butterscotch").setQuantity(40);
+        ingredients.get("Cinnamon").setQuantity(60);
 
-        assertEquals(62842880, Program.getCookieScore(ingredients));
+        assertEquals(57600000, Program.getCookieScore(ingredients));
     }
 }

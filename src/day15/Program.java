@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Use science to calculate the best cookie recipe with the optimum
- * balance of ingredients
+ * balance of ingredients and a calorie count of 500
  */
 public class Program
 {
@@ -64,6 +64,9 @@ public class Program
         int durability = Math.max(0, ingredientDurabilities.stream().mapToInt(Integer::intValue).sum());
         int flavour    = Math.max(0, ingredientFlavours.stream().mapToInt(Integer::intValue).sum());
         int texture    = Math.max(0, ingredientTextures.stream().mapToInt(Integer::intValue).sum());
+        int calories   = Math.max(0, ingredientCalories.stream().mapToInt(Integer::intValue).sum());
+
+        if (calories != 500) return 0;
 
         return capacity * durability * flavour * texture;
     }

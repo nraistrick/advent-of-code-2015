@@ -5,6 +5,7 @@ package day14;
  */
 public class Reindeer
 {
+    public String Name;
     public int TopSpeed;
     public int FlyTime;
     public int RestTime;
@@ -14,10 +15,11 @@ public class Reindeer
     private int _remainingFlyTime;
     private int _remainingRestTime;
 
-    public Reindeer(int topSpeed, int flyTime, int restTime)
+    public Reindeer(int topSpeed, int flyTime, int restTime, String name)
     {
+        Name     = name;
         TopSpeed = topSpeed;
-        FlyTime = flyTime;
+        FlyTime  = flyTime;
         RestTime = restTime;
 
         DistanceTravelled = 0;

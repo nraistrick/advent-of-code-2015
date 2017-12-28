@@ -18,4 +18,13 @@ class ProgramTest
         int maxDistance = Program.getMaxDistanceTravelled(reindeer, 1000);
         assertEquals(1120, maxDistance);
     }
+
+    @Test
+    void getMaxPoints() throws IOException
+    {
+        List<String> inputData = Utilities.getFileLines("day14/testinput.txt");
+        List<Reindeer> reindeer = Program.createReindeer(inputData);
+        int maxPoints = Program.getMaximumPoints(reindeer, 1000);
+        assertEquals(689, maxPoints);
+    }
 }

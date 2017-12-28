@@ -11,6 +11,9 @@ public class Program
         String currentPassword = "hepxcrrq";
         String newPassword = calculateNewPassword(currentPassword);
         System.out.println("Santa's new password is : " + newPassword);
+
+        newPassword = calculateNewPassword(newPassword);
+        System.out.println("Santa's second new password is : " + newPassword);
     }
 
     public static String calculateNewPassword(String currentPassword)

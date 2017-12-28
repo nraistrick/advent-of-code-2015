@@ -9,7 +9,7 @@ public class Program
     public static void main(String[] args)
     {
         String currentMove = "3113322113";
-        int numberOfTurns = 40;
+        int numberOfTurns = 50;
 
         for (int i = 0; i < numberOfTurns; i++) currentMove = getNextMove(currentMove);
 

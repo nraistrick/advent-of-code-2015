@@ -14,7 +14,7 @@ public class Program
     public static void main(String[] args) throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day09/input.txt");
-        Map<String, Map<String, Integer>> travelDistanceLookup = createLocationLookup(inputData);
+        Map<String, Map<String, Integer>> travelDistanceLookup = createHappinessLookup(inputData);
 
         List<Integer> allDistances = new ArrayList();
         Set<String> locations = travelDistanceLookup.keySet();
@@ -33,7 +33,7 @@ public class Program
         System.out.println(String.format("The maximum available distance is: %d", maximumAvailableDistance));
     }
 
-    public static Map<String, Map<String, Integer>> createLocationLookup(List<String> inputData)
+    public static Map<String, Map<String, Integer>> createHappinessLookup(List<String> inputData)
     {
         Map<String, Map<String, Integer>> locations = new HashMap();
 

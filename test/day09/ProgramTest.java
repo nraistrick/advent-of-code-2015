@@ -17,7 +17,7 @@ class ProgramTest
     public void createLocationLookup() throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day09/testinput.txt");
-        Map<String, Map<String, Integer>> locationLookup = Program.createLocationLookup(inputData);
+        Map<String, Map<String, Integer>> locationLookup = Program.createHappinessLookup(inputData);
 
         assertEquals(141, (int)locationLookup.get("Belfast").get("Dublin"));
         assertEquals(518, (int)locationLookup.get("Belfast").get("London"));
@@ -31,7 +31,7 @@ class ProgramTest
     public void findAllDistances() throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day09/testinput.txt");
-        Map<String, Map<String, Integer>> locationLookup = Program.createLocationLookup(inputData);
+        Map<String, Map<String, Integer>> locationLookup = Program.createHappinessLookup(inputData);
 
         Set<String> locations = new TreeSet(locationLookup.keySet());
         locations.remove("London");

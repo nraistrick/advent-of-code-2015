@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * Calculate the optimum seating arrangement for a set of dinner guests
- * to maximise overall happiness
+ * to maximise overall happiness. This also includes yourself.
  */
 public class Program
 {

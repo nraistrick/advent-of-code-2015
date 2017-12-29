@@ -27,37 +27,15 @@ public class Program
         List<String> names = new ArrayList(ingredients.keySet());
 
         int highestScore = 0;
-        for (int i = 0; i <= 100; i++)
+        for (List<Integer> combination : Utilities.findSumCombinations(100, names.size()))
         {
-            for (int j = 0; j <= 100; j++)
+            for (int i = 0; i < names.size(); i++)
             {
-                for (int k = 0; k <= 100; k++)
-                {
-                    for (int l = 0; l <= 100; l++)
-                    {
-                        int totalIngredients = i + j + k + l;
-                        if (totalIngredients == 100)
-                        {
-                            if (names.size() == 4)
-                            {
-                                ingredients.get(names.get(0)).setQuantity(i);
-                                ingredients.get(names.get(1)).setQuantity(j);
-                                ingredients.get(names.get(2)).setQuantity(k);
-                                ingredients.get(names.get(3)).setQuantity(l);
-                            }
-                            else if (names.size() == 2)
-                            {
-                                ingredients.get(names.get(0)).setQuantity(i);
-                                ingredients.get(names.get(1)).setQuantity(j);
-                            }
-
-                            int cookieScore = getCookieScore(ingredients);
-
-                            highestScore = Math.max(highestScore, cookieScore);
-                        }
-                    }
-                }
+                ingredients.get(names.get(i)).setQuantity(combination.get(i));
             }
+
+            int cookieScore = getCookieScore(ingredients);
+            highestScore = Math.max(highestScore, cookieScore);
         }
 
         return highestScore;

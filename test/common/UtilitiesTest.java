@@ -61,4 +61,25 @@ class UtilitiesTest
         assertEquals(13, Utilities.nthIndexOf("abc abc defasabc", "abc", 3));
         assertEquals(-1, Utilities.nthIndexOf("abc abc defasabc", "abc", 4));
     }
+
+    @Test
+    void findSumCombinations()
+    {
+        List<List<Integer>> combinations = Utilities.findSumCombinations(1, 2);
+        assertEquals("[[0, 1], [1, 0]]", combinations.toString());
+
+        combinations = Utilities.findSumCombinations(1, 3);
+        assertEquals("[[0, 0, 1], [0, 1, 0], [1, 0, 0]]", combinations.toString());
+
+        combinations = Utilities.findSumCombinations(2, 3);
+        assertEquals("[[0, 0, 2], [0, 1, 1], [0, 2, 0], " +
+                     "[1, 0, 1], [1, 1, 0], [2, 0, 0]]",
+                     combinations.toString());
+
+        combinations = Utilities.findSumCombinations(3, 3);
+        assertEquals("[[0, 0, 3], [0, 1, 2], [0, 2, 1], " +
+                     "[0, 3, 0], [1, 0, 2], [1, 1, 1], " +
+                     "[1, 2, 0], [2, 0, 1], [2, 1, 0], [3, 0, 0]]",
+                     combinations.toString());
+    }
 }

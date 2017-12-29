@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Utilities
@@ -79,5 +80,39 @@ public class Utilities
             if (index == -1) return -1;
         }
         return index;
+    }
+
+    public static List<List<Integer>> findSumCombinations(int total, int components)
+    {
+        return findSumCombinations(total, components, 0);
+    }
+
+    private static List<List<Integer>> findSumCombinations(int total, int components, int created)
+    {
+        if (components < 2)
+            throw new IllegalArgumentException("Need to divide the total between at least two numbers");
+
+        if (created == (components - 1))
+        {
+            List<Integer> combination = new ArrayList<Integer>() {{ add(total); }};
+            List<List<Integer>> compoundList = new ArrayList();
+            compoundList.add(combination);
+            return compoundList;
+        }
+
+        List<List<Integer>> combinations = new ArrayList();
+        for (int i = 0; i <= total; i++)
+        {
+            List<List<Integer>> furtherSequences = findSumCombinations(total - i, components, created + 1);
+            for (List<Integer> sequence : furtherSequences)
+            {
+                List<Integer> temp = new ArrayList();
+                temp.add(i);
+                temp.addAll(sequence);
+                combinations.add(temp);
+            }
+        }
+
+        return combinations;
     }
 }

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  */
 public class Program
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws Exception
     {
         String molecule = "CRnSiRnCaPTiMgYCaPTiRnFArSiThFArCaSiThSiThPBCaCaSiRnSiRnTiTiMgArPBCaPMgY" +
                           "PTiRnFArFArCaSiRnBPMgArPRnCaPTiRnFArCaSiThCaCaFArPBCaCaPTiTiRnFArCaSiRnS" +
@@ -27,6 +27,10 @@ public class Program
         List<String> distinctSubstitutions = getDistinctSubstitutes(molecule, replacements);
 
         System.out.println("The number of distinct molecules that can be created are: " + distinctSubstitutions.size());
+
+        int steps = getMinimumNumberOfSteps("e", molecule, replacements);
+        
+        System.out.println("The minimum number of steps to produce the medicine molecule is: " + steps);
     }
 
     public static List<Map.Entry<String, String>> getReplacements(List<String> inputData)
@@ -41,6 +45,38 @@ public class Program
         }
 
         return replacements;
+    }
+
+    public static int getMinimumNumberOfSteps(String startingMolecule,
+                                              String medicineMolecule,
+                                              List<Map.Entry<String, String>> replacements) throws Exception
+    {
+        List<Map.Entry<String, String>> invertedReplacements = new ArrayList();
+        for (Map.Entry<String, String> r : replacements)
+        {
+            String key = r.getKey();
+            String value = r.getValue();
+
+            invertedReplacements.add(new AbstractMap.SimpleEntry(value, key));
+        }
+
+        Collections.sort(invertedReplacements, (a,b) -> Integer.compare(b.getKey().length(), a.getKey().length()));
+
+        int steps = 0;
+        while (!medicineMolecule.equals(startingMolecule))
+        {
+            for (Map.Entry<String, String> substitution : invertedReplacements)
+            {
+                if (medicineMolecule.contains(substitution.getKey()))
+                {
+                    medicineMolecule = medicineMolecule.replaceFirst(substitution.getKey(), substitution.getValue());
+                    steps++;
+                    break;
+                }
+            }
+        }
+
+        return steps;
     }
 
     public static List<String> getDistinctSubstitutes(String molecule, List<Map.Entry<String, String>> replacements)

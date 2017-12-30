@@ -12,6 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgramTest
 {
     @Test
+    void getMinimumNumberOfSteps() throws Exception
+    {
+        List<String> inputData = Utilities.getFileLines("day19/testinput.txt");
+        List<Map.Entry<String, String>> replacements = Program.getReplacements(inputData);
+        assertEquals(3, Program.getMinimumNumberOfSteps("e", "HOH", replacements));
+        assertEquals(6, Program.getMinimumNumberOfSteps("e", "HOHOHO", replacements));
+        assertEquals(8, Program.getMinimumNumberOfSteps("e", "HOHOHOHO", replacements));
+    }
+
+    @Test
     void getDistinctSubstitutes() throws IOException
     {
         List<String> inputData = Utilities.getFileLines("day19/testinput.txt");
@@ -32,5 +42,4 @@ class ProgramTest
         substitutions = Program.getAllSubstitutions("HOH", "O", "HH");
         assertEquals("[HHHH]", substitutions.toString());
     }
-
 }

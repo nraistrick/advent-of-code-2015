@@ -23,4 +23,15 @@ class ProgramTest
         List<List<Integer>> uniqueCombinations = combinations.stream().distinct().collect(Collectors.toList());
         assertEquals(4, uniqueCombinations.size());
     }
+
+    @Test
+    void countContainerCombinations()
+    {
+        List<List<Integer>> containers = new ArrayList();
+        containers.add(Arrays.asList(1, 2));
+        containers.add(Arrays.asList(2, 3));
+        containers.add(Arrays.asList(1, 2, 3));
+
+        assertEquals(2, Program.countContainerCombinations(containers, 2));
+    }
 }

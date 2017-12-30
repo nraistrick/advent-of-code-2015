@@ -120,4 +120,15 @@ public class Utilities
     {
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
+
+    public static <T> int findSizeOfSmallest(List<List<T>> lists)
+    {
+        int smallestLength = 0;
+        for (List<T> l : lists)
+        {
+            if (smallestLength == 0 || l.size() < smallestLength) smallestLength = l.size();
+        }
+
+        return smallestLength;
+    }
 }

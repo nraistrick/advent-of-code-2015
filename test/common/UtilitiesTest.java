@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -88,5 +89,22 @@ class UtilitiesTest
     {
         assertEquals("Hello", Utilities.capitaliseFirstLetter("hello"));
         assertEquals("Bob vance", Utilities.capitaliseFirstLetter("bob vance"));
+    }
+
+    @Test
+    void findSizeOfSmallest()
+    {
+        List<List<Integer>> input = new ArrayList();
+        input.add(Arrays.asList(1, 2));
+        input.add(Arrays.asList(1, 2, 3));
+        input.add(Arrays.asList(1, 2, 3, 4));
+
+        assertEquals(2, Utilities.findSizeOfSmallest(input));
+
+        List<List<String>> otherInput = new ArrayList();
+        otherInput.add(Arrays.asList("a", "b", "c", "d"));
+        otherInput.add(Arrays.asList("a", "b", "c"));
+
+        assertEquals(3, Utilities.findSizeOfSmallest(otherInput));
     }
 }

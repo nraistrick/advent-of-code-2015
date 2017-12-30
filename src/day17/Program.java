@@ -26,6 +26,26 @@ public class Program
         List<List<Integer>> uniqueCombinations = possibleCombinations.stream().distinct().collect(Collectors.toList());
 
         System.out.println("The number of possible combinations is: " + uniqueCombinations.size());
+
+        int minimumSize = Utilities.findSizeOfSmallest(uniqueCombinations);
+        int containerCombinations = countContainerCombinations(uniqueCombinations, minimumSize);
+
+        System.out.println("The number of minimum-size container combinations is " + containerCombinations);
+    }
+
+    /**
+     * Counts the number of combinations at a specific size
+     */
+    public static int countContainerCombinations(List<List<Integer>> uniqueCombinations, int size)
+    {
+        int containersAtSize = 0;
+
+        for (List<Integer> combination : uniqueCombinations)
+        {
+            if (combination.size() == size) containersAtSize++;
+        }
+
+        return containersAtSize;
     }
 
     public static List<List<Integer>> countPossibleCombinations(List<Integer> containers,

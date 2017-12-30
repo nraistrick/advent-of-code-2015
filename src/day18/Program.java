@@ -8,7 +8,8 @@ import java.util.List;
 /**
  * Calculate the number of lights switched on in a two-dimensional grid
  * for a holiday-house decorating contest. The number of lights is now limited
- * to 10,000 maximum.
+ * to 10,000 maximum. The lights in the corners are now stuck switched on and
+ * can't be turned off.
  */
 public class Program
 {
@@ -38,6 +39,12 @@ public class Program
             {
                 if      (inputData.get(y).charAt(x) == '#') grid[x][y] = true;
                 else if (inputData.get(y).charAt(x) == '.') grid[x][y] = false;
+
+                if (x == 0 && y == 0           || x == 0 && y == grid[0].length - 1 ||
+                    x == grid.length - 1 && y == 0 || x == grid.length - 1 && y == grid[0].length - 1)
+                {
+                    grid[x][y] = true;
+                }
             }
         }
     }
@@ -54,6 +61,14 @@ public class Program
         {
             for (int j = 0; j < grid[0].length; j++)
             {
+                if (i == 0 && j == 0           || i == 0 && j == grid[0].length - 1 ||
+                    i == grid.length - 1 && j == 0 || i == grid.length - 1 && j == grid[0].length - 1)
+                {
+                    copy[i][j] = true;
+                    continue;
+                }
+
+
                 copy[i][j] = getUpdatedPixelState(i, j);
             }
         }

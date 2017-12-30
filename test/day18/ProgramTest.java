@@ -16,18 +16,18 @@ class ProgramTest
         List<String> inputData = Utilities.getFileLines("day18/testinput.txt");
         Program program = new Program(6, 6, inputData);
 
-        assertEquals(15, program.countOnLights());
+        assertEquals(17, program.countOnLights());
 
         program.updateGrid();
-        assertEquals(11, program.countOnLights());
+        assertEquals(18, program.countOnLights());
 
         program.updateGrid();
-        assertEquals(8, program.countOnLights());
+        assertEquals(18, program.countOnLights());
 
         program.updateGrid();
-        assertEquals(4, program.countOnLights());
+        assertEquals(18, program.countOnLights());
 
         program.updateGrid();
-        assertEquals(4, program.countOnLights());
+        assertEquals(14, program.countOnLights());
     }
 }

@@ -82,4 +82,11 @@ class UtilitiesTest
                      "[1, 2, 0], [2, 0, 1], [2, 1, 0], [3, 0, 0]]",
                      combinations.toString());
     }
+
+    @Test
+    void capitaliseFirstLetter()
+    {
+        assertEquals("Hello", Utilities.capitaliseFirstLetter("hello"));
+        assertEquals("Bob vance", Utilities.capitaliseFirstLetter("bob vance"));
+    }
 }

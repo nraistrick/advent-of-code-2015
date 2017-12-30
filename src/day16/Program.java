@@ -64,13 +64,13 @@ public class Program
         for (int i = 0; i < possibleAuntSues.size(); i++)
         {
             if (possibleAuntSues.get(i).Children    != null && auntSue.Children    != possibleAuntSues.get(i).Children)    continue;
-            if (possibleAuntSues.get(i).Cats        != null && auntSue.Cats        != possibleAuntSues.get(i).Cats)        continue;
+            if (possibleAuntSues.get(i).Cats        != null && auntSue.Cats        >= possibleAuntSues.get(i).Cats)        continue;
             if (possibleAuntSues.get(i).Samoyeds    != null && auntSue.Samoyeds    != possibleAuntSues.get(i).Samoyeds)    continue;
-            if (possibleAuntSues.get(i).Pomeranians != null && auntSue.Pomeranians != possibleAuntSues.get(i).Pomeranians) continue;
+            if (possibleAuntSues.get(i).Pomeranians != null && auntSue.Pomeranians <= possibleAuntSues.get(i).Pomeranians) continue;
             if (possibleAuntSues.get(i).Akitas      != null && auntSue.Akitas      != possibleAuntSues.get(i).Akitas)      continue;
             if (possibleAuntSues.get(i).Vizslas     != null && auntSue.Vizslas     != possibleAuntSues.get(i).Vizslas)     continue;
-            if (possibleAuntSues.get(i).Goldfish    != null && auntSue.Goldfish    != possibleAuntSues.get(i).Goldfish)    continue;
-            if (possibleAuntSues.get(i).Trees       != null && auntSue.Trees       != possibleAuntSues.get(i).Trees)       continue;
+            if (possibleAuntSues.get(i).Goldfish    != null && auntSue.Goldfish    <= possibleAuntSues.get(i).Goldfish)    continue;
+            if (possibleAuntSues.get(i).Trees       != null && auntSue.Trees       >= possibleAuntSues.get(i).Trees)       continue;
             if (possibleAuntSues.get(i).Cars        != null && auntSue.Cars        != possibleAuntSues.get(i).Cars)        continue;
             if (possibleAuntSues.get(i).Perfumes    != null && auntSue.Perfumes    != possibleAuntSues.get(i).Perfumes)    continue;
 

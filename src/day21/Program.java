@@ -52,6 +52,9 @@ public class Program
     {
         int minimumCost = calculateCheapestWayToWin();
         System.out.println("The minimum cost required to win is: " + minimumCost);
+
+        int maximumCost = calculateMostExpensiveWayToLose();
+        System.out.println("The maximum cost spent resulting in a loss: " + maximumCost);
     }
 
     public static int calculateCheapestWayToWin()
@@ -82,6 +85,36 @@ public class Program
         }
 
         return minimumCost;
+    }
+
+    public static int calculateMostExpensiveWayToLose()
+    {
+        int maximumCost = -1;
+        List<List<CharacterItem>> ringCombinations = Utilities.getPermutations(rings, 2);
+
+        for(CharacterItem weapon : weapons)
+        {
+            for(CharacterItem armour : armour)
+            {
+                for(List<CharacterItem> ringCombination : ringCombinations)
+                {
+                    List<CharacterItem> equipped = new ArrayList();
+                    equipped.add(weapon);
+                    equipped.add(armour);
+                    equipped.addAll(ringCombination);
+
+                    CharacterItem combined = combineItems(equipped);
+
+                    if(!checkIfYouWinBossBattle(combined.get_damage(), combined.get_armour())
+                            && (maximumCost == -1 || combined.get_cost() > maximumCost))
+                    {
+                        maximumCost = combined.get_cost();
+                    }
+                }
+            }
+        }
+
+        return maximumCost;
     }
 
     public static CharacterItem combineItems(List<CharacterItem> equippedItems)

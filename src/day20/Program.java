@@ -4,7 +4,8 @@ import static java.lang.Math.sqrt;
 
 /**
  * Finds the number of presents delivered to a house from a number
- * of elves delivering in different sequences
+ * of elves delivering in different sequences. The elves now stop
+ * delivering presents after visiting 50 houses.
  */
 public class Program
 {
@@ -28,6 +29,7 @@ public class Program
     public static int calculatePresentsForHouse(int houseNumber)
     {
         int presentsForHouse = 0;
+        int lowestElfDelivering = (houseNumber + 50 - 1) / 50;
         int elfNumber = 1;
 
         while (elfNumber <= sqrt(houseNumber))
@@ -37,8 +39,11 @@ public class Program
 
             if (remainder == 0)
             {
-                presentsForHouse += elfNumber;
-                if (quotient != elfNumber)
+                if (elfNumber >= lowestElfDelivering)
+                {
+                    presentsForHouse += elfNumber;
+                }
+                if ((quotient >= lowestElfDelivering) && (quotient != elfNumber))
                 {
                     presentsForHouse += quotient;
                 }
@@ -47,6 +52,6 @@ public class Program
             elfNumber++;
         }
 
-        return presentsForHouse * 10;
+        return presentsForHouse * 11;
     }
 }

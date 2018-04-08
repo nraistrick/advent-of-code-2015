@@ -107,4 +107,19 @@ class UtilitiesTest
 
         assertEquals(3, Utilities.findSizeOfSmallest(otherInput));
     }
+
+    @Test
+    void getPermutations()
+    {
+        List<Integer> numbers = new ArrayList(Arrays.asList(1, 2, 3));
+
+        assertEquals("[[1], [2], [3]]",
+                Utilities.getPermutations(numbers, 1).toString());
+
+        assertEquals("[[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]",
+                Utilities.getPermutations(numbers, 2).toString());
+
+        assertEquals("[[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]",
+                Utilities.getPermutations(numbers, 3).toString());
+    }
 }

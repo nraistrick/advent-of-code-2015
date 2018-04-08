@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utilities
@@ -130,5 +131,35 @@ public class Utilities
         }
 
         return smallestLength;
+    }
+
+    public static <T> List<List<T>> getPermutations(List<T> options, int length)
+    {
+        return getPermutations(options, length, new ArrayList());
+    }
+
+    private static <T> List<List<T>> getPermutations(List<T> options, int length, List<T> currentChoice)
+    {
+        List<List<T>> permutations = new ArrayList();
+
+        for (int i = 0; i < options.size(); i++)
+        {
+            List<T> optionsCopy = new ArrayList(options);
+            optionsCopy.remove(i);
+
+            List<T> currentChoiceCopy = new ArrayList(currentChoice);
+            currentChoiceCopy.add(options.get(i));
+
+            if (currentChoiceCopy.size() >= length)
+            {
+                permutations.add(currentChoiceCopy);
+            }
+            else
+            {
+                permutations.addAll(getPermutations(optionsCopy, length, currentChoiceCopy));
+            }
+        }
+
+        return permutations;
     }
 }

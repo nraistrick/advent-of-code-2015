@@ -11,7 +11,8 @@ import java.util.*;
 
 /**
  * A program to simulate an RPG battle between two characters
- * and find the minimum mana cost required to win
+ * and find the minimum mana cost required to win, with hard-mode
+ * enabled
  */
 public class Program
 {
@@ -20,7 +21,7 @@ public class Program
         Player player = new Player(50, 500);
         Boss boss = new Boss(58, 9);
 
-        int manaSpent = calculateMinimumManaSpent(new State(player, boss, false));
+        int manaSpent = calculateMinimumManaSpent(new State(player, boss, false), true);
 
         System.out.println("The smallest amount of mana required to win is: " + manaSpent);
     }
@@ -35,7 +36,7 @@ public class Program
         return Arrays.asList(new Drain(), new MagicMissile());
     }
 
-    public static int calculateMinimumManaSpent(State startingState)
+    public static int calculateMinimumManaSpent(State startingState, boolean hardMode)
     {
         Integer finalManaSpent = null;
 
@@ -50,6 +51,13 @@ public class Program
             boolean bossesTurn = state.bossesTurn;
 
             if (finalManaSpent != null && player.getTotalManaUsed() > finalManaSpent) continue;
+
+            if (hardMode && bossesTurn == false)
+            {
+                player.setHitpoints(player.getHitpoints() - 1);
+                if (player.getHitpoints() <= 0)
+                    continue;
+            }
 
             if (boss.getHitpoints() <= 0)
             {

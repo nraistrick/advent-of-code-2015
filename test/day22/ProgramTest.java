@@ -110,11 +110,23 @@ class ProgramTest
     void checkMinimumManaCalculatedCorrectly() throws GameOver
     {
         int manaSpent = Program.calculateMinimumManaSpent(
-                new State(new Player(10, 250), new Boss(13, 8), false));
+                new State(new Player(10, 250), new Boss(13, 8), false), false);
         assertEquals(226, manaSpent);
 
         manaSpent = Program.calculateMinimumManaSpent(
-                new State(new Player(10, 250), new Boss(14, 8), false));
+                new State(new Player(10, 250), new Boss(14, 8), false), false);
         assertEquals(641, manaSpent);
+    }
+
+    @Test
+    void checkMinimumManaCalculatedCorrectlyInHardMode() throws GameOver
+    {
+        int manaSpent = Program.calculateMinimumManaSpent(
+                new State(new Player(14, 250), new Boss(13, 8), false), true);
+        assertEquals(226, manaSpent);
+
+        manaSpent = Program.calculateMinimumManaSpent(
+                new State(new Player(15, 250), new Boss(14, 8), false), true);
+        assertEquals(588, manaSpent);
     }
 }

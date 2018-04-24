@@ -16,6 +16,6 @@ public class ProgramTest
         List<String> instructions = Utilities.getFileLines("day23/testinput.txt");
         MyFirstComputer myFirstComputer = new MyFirstComputer(instructions);
         myFirstComputer.execute();
-        assertEquals(2, myFirstComputer.getValueRegisterA());
+        assertEquals(7, myFirstComputer.getValueRegisterA());
     }
 }

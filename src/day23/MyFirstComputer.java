@@ -23,7 +23,7 @@ public class MyFirstComputer
     public MyFirstComputer(List<String> instructions)
     {
         registers = new HashMap();
-        registers.put("a", 0);
+        registers.put("a", 1);
         registers.put("b", 0);
 
         this.instructions = instructions;

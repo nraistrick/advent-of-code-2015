@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Program
 {
-    private static final int NUMBER_OF_SLEIGH_AREAS = 3;
+    private static final int NUMBER_OF_SLEIGH_AREAS = 4;
 
     public static void main(String[] args) throws IOException
     {

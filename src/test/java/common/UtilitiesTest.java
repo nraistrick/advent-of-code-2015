@@ -1,6 +1,7 @@
 package common;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.security.MessageDigest;

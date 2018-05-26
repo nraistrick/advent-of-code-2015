@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProgramTest
 {
     @Test
-    void checkInstructionsExecutedCorrectly() throws IOException
+    public void checkInstructionsExecutedCorrectly() throws IOException
     {
         List<String> instructions = Utilities.getFileLines("day23/testinput.txt");
         MyFirstComputer myFirstComputer = new MyFirstComputer(instructions);
